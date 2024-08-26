@@ -25,6 +25,10 @@ export default defineCachedEventHandler(async (event) => {
     const [owner, name] = pr.repository_url.split('/').slice(-2)
     const repo = await fetchRepo(event, owner!, name!)
 
+    if (name === 'creative-mind') {
+      continue
+    }
+
     prs.push({
       repo: `${owner}/${name}`,
       title: pr.title,
